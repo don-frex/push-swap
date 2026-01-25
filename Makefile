@@ -13,15 +13,15 @@
 NAME = push_swap
 BONUS = checker
 
-CC = CC
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = push_swap.c check_errors.c actions.c check_acending.c ft_sort.c ft_split.c linked_data.c postion.c push_swap.c
+SRC = push_swap.c check_errors.c actions.c check_acending.c ft_sort.c ft_split.c linked_data.c postion.c
 
 SRCB = check_errors.c actions.c check_acending.c ft_sort.c ft_split.c linked_data.c postion.c bonus/get_next_line.c bonus/get_next_line_utils.c bonus/checker.c
 
-OBJS = $(push_swap:.c=.o)
+OBJS = $(SRC:.c=.o)
 
 RM = rm -f
 

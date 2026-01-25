@@ -56,17 +56,20 @@ void	fill_stack_a(s_node **s_a, int argc, char **argv)
 	}
 }
 
-void	let_sort(s_node *stack_a)
+void	let_sort(s_node **stack_a)
 {
-	//if (s_nodeline(stack_a) == 3)
-		sort_3(&stack_a);
-	// else if (s_nodeline(stack_a) == 5)
-	// 	sort_5(&stack_a, &stack_b);
-	// else
-	// {
-	// 	to_stack_b(&stack_a, &stack_b);
-	// 	to_stack_a(&stack_a, &stack_b);
-	// }
+	s_node	*stack_b;
+
+	stack_b = NULL;
+	if (s_nodeline(*stack_a) == 3)
+		sort_3(stack_a);
+	else if (s_nodeline(*stack_a) == 5)
+		sort_5(stack_a, &stack_b);
+	else
+	{
+		to_stack_b(stack_a, &stack_b);
+		to_stack_a(stack_a, &stack_b);
+	}
 }
 
 int	main(int argc, char **argv)
@@ -90,12 +93,8 @@ int	main(int argc, char **argv)
 		ft_clear(&stack_a);
 		return (0);
 	}
-	let_sort(stack_a);
+	let_sort(&stack_a);
 	ft_clear(&stack_a);
 	stack_a = NULL;
-	while (1)
-	{
-		
-	}
 	return (0);
 }

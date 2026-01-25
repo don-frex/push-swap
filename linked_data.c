@@ -36,10 +36,12 @@ void	ft_lstadd_back(s_node *lst, s_node *new)
 		return ;
 	}
 	else
+	{
 		while (end->next)
 			end = end->next;
 		end->next = new;
-		new->next = NULL;
+	}
+	new->next = NULL;
 }
 
 void	ft_lstadd_front(s_node **lst, s_node *new)
