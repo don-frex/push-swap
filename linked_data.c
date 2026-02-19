@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asaber <asaber@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adnane <adnane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 18:15:27 by asaber            #+#    #+#             */
-/*   Updated: 2023/04/02 21:25:24 by asaber           ###   ########.fr       */
+/*   Updated: 2026/02/19 21:32:08 by adnane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,12 @@ void	ft_lstadd_back(t_node *lst, t_node *new)
 		return ;
 	}
 	else
+	{
 		while (end->next)
 			end = end->next;
 		end->next = new;
 		new->next = NULL;
+	}
 }
 
 void	ft_lstadd_front(t_node **lst, t_node *new)

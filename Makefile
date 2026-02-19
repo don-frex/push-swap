@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asaber <asaber@student.42.fr>              +#+  +:+       +#+         #
+#    By: adnane <adnane@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/15 14:14:27 by asaber            #+#    #+#              #
-#    Updated: 2023/04/01 17:21:57 by asaber           ###   ########.fr        #
+#    Updated: 2026/02/19 21:30:48 by adnane           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 BONUS = checker
 
-CC = CC
+CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 

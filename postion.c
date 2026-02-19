@@ -102,11 +102,9 @@ int	*arr_sorted(int n, t_node *stack)
 void	fil_rank(t_node *stack)
 {
 	int		*arr;
-	t_node	*print;
 	int		i;
 	int		line;
 
-	print = stack;
 	arr = arr_sorted(t_nodeline(stack), stack);
 	line = t_nodeline(stack);
 	while (stack)
