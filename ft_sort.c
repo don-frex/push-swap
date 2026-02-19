@@ -6,7 +6,7 @@
 /*   By: asaber <asaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 22:36:01 by asaber            #+#    #+#             */
-/*   Updated: 2023/03/27 02:44:30 by asaber           ###   ########.fr       */
+/*   Updated: 2023/03/30 21:04:18 by asaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	range(int check, int i, int curent_range)
 		return (1);
 }
 
-void	to_stack_b(s_node **stack_a, s_node **stack_b)
+void	to_stack_b(t_node **stack_a, t_node **stack_b)
 {
 	int	i;
 	int	check;
 
 	fil_rank(*stack_a);
-	if (s_nodeline(*stack_a) >= 500)
+	if (t_nodeline(*stack_a) >= 500)
 		check = 1;
 	else
 		check = 0;
@@ -57,14 +57,14 @@ void	to_stack_b(s_node **stack_a, s_node **stack_b)
 	}
 }
 
-void	to_stack_a(s_node **stack_a, s_node **stack_b)
+void	to_stack_a(t_node **stack_a, t_node **stack_b)
 {
 	int	rank;
 
-	while (s_nodeline(*stack_b))
+	while (t_nodeline(*stack_b))
 	{
 		rank = high_ranked(*stack_b);
-		if (rank == 1 || rank <= s_nodeline(*stack_b) / 2)
+		if (rank == 1 || rank <= t_nodeline(*stack_b) / 2)
 		{
 			while (rank-- > 1)
 				ra_b(stack_b, 'b');
@@ -72,14 +72,14 @@ void	to_stack_a(s_node **stack_a, s_node **stack_b)
 		}
 		else
 		{
-			while (rank++ <= s_nodeline(*stack_b))
+			while (rank++ <= t_nodeline(*stack_b))
 				*stack_b = rra_b(*stack_b, 'b');
 			pa_b(stack_b, stack_a, 'a');
 		}
 	}
 }
 
-void	sort_3(s_node **stack_a)
+void	sort_3(t_node **stack_a)
 {
 	while (!if_acending(*stack_a))
 	{
@@ -94,7 +94,7 @@ void	sort_3(s_node **stack_a)
 	}
 }
 
-void	sort_5(s_node **stack_a, s_node **stack_b)
+void	sort_5(t_node **stack_a, t_node **stack_b)
 {
 	int	rank;
 	int	i;
@@ -113,7 +113,7 @@ void	sort_5(s_node **stack_a, s_node **stack_b)
 		}
 		else
 		{
-			while (i++ <= s_nodeline(*stack_a))
+			while (i++ <= t_nodeline(*stack_a))
 				*stack_a = rra_b(*stack_a, 'a');
 			pa_b(stack_a, stack_b, 'b');
 		}

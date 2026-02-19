@@ -6,13 +6,13 @@
 /*   By: asaber <asaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 20:41:33 by asaber            #+#    #+#             */
-/*   Updated: 2023/03/29 20:47:03 by asaber           ###   ########.fr       */
+/*   Updated: 2023/03/30 21:04:18 by asaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	high_ranked(s_node *stack)
+int	high_ranked(t_node *stack)
 {
 	int	i;
 	int	count;
@@ -34,7 +34,7 @@ int	high_ranked(s_node *stack)
 	return (count);
 }
 
-int	low_ranked(s_node *stack)
+int	low_ranked(t_node *stack)
 {
 	int	i;
 	int	count;
@@ -56,12 +56,12 @@ int	low_ranked(s_node *stack)
 	return (count);
 }
 
-int	*to_array(s_node *stack)
+int	*to_array(t_node *stack)
 {
 	int	*arr;
 	int	i;
 
-	arr = malloc(s_nodeline(stack) * sizeof(stack));
+	arr = malloc(t_nodeline(stack) * sizeof(stack));
 	i = 0;
 	while (stack)
 	{
@@ -72,7 +72,7 @@ int	*to_array(s_node *stack)
 	return (arr);
 }
 
-int	*arr_sorted(int n, s_node *stack)
+int	*arr_sorted(int n, t_node *stack)
 {
 	int	*arr;
 	int	tmp;
@@ -99,14 +99,16 @@ int	*arr_sorted(int n, s_node *stack)
 	return (arr);
 }
 
-void	fil_rank(s_node *stack)
+void	fil_rank(t_node *stack)
 {
 	int		*arr;
+	t_node	*print;
 	int		i;
 	int		line;
 
-	arr = arr_sorted(s_nodeline(stack), stack);
-	line = s_nodeline(stack);
+	print = stack;
+	arr = arr_sorted(t_nodeline(stack), stack);
+	line = t_nodeline(stack);
 	while (stack)
 	{
 		i = 0;

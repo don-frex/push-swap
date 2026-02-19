@@ -6,7 +6,7 @@
 /*   By: asaber <asaber@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:43:21 by asaber            #+#    #+#             */
-/*   Updated: 2023/03/29 01:54:20 by asaber           ###   ########.fr       */
+/*   Updated: 2023/04/05 21:54:40 by asaber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 int	ft_check_first(int argc, char **argv)
 {
-	int	i;
+	int		i;
+	char	**av;
 
+	av = ft_split(argv[1], ' ');
+	if (!av[0])
+		error(1);
+	i = 0;
+	while (av[i])
+		free(av[i++]);
+	free(av);
 	i = 1;
 	while (i < argc)
 	{
-		if (!(argv[i][0] >= '0' && argv[i][0] <= '9')
+		if (!(argv[i][0] >= '0' && argv[i][0] <= '9') && !(argv[i][0] == ' ')
 			&& !(argv[i][0] == '-' || argv[i][0] == '+'))
 			return (0);
 		i++;
@@ -27,33 +35,11 @@ int	ft_check_first(int argc, char **argv)
 	return (1);
 }
 
-long long	ft_atoi(char *str)
+void	error(int i)
 {
-	int			i;
-	int			sgin;
-	long long	res;
-
-	i = 0;
-	res = 0;
-	sgin = 1;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sgin = -1;
-		i++;
-	}
-	while (str[i])
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-		{
-			res *= 10;
-			res += str[i] - 48;
-		}
-		if (!(str[i] >= '0' && str[i] <= '9') && !(str[i] == 32))
-			return (0);
-		i++;
-	}
-	return (res * sgin);
+	if (i == 1)
+		write(2, "Error\n", 6);
+	exit(i);
 }
 
 int	check_zero(char *str)
@@ -61,6 +47,10 @@ int	check_zero(char *str)
 	int	i;
 
 	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (!str[i])
+		return (1);
 	while (str[i])
 	{
 		if (str[i] != '0')
@@ -70,36 +60,37 @@ int	check_zero(char *str)
 	return (0);
 }
 
-int	check_errors(int argc, char **argv)
+void	check_errors(int argc, char **argv)
 {
-	int	i;
+	int		i;
+	int		j;
+	int		k;
+	char	**arg;
 
 	if (!ft_check_first(argc, argv))
-	{
-		write(2, "Error\n", 6);
-		return (0);
-	}
+		error(1);
 	i = 1;
 	while (i < argc)
 	{
-		if (!ft_atoi(argv[i]) && check_zero(argv[i]))
+		j = 0;
+		arg = ft_split(argv[i], ' ');
+		while (arg[j])
 		{
-			write(2, "Error\n", 6);
-			return (0);
+			if (!ft_atoi(arg[j]) && check_zero(arg[j]))
+				error(1);
+			j++;
 		}
-		if (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
-		{
-			write(2, "Error\n", 6);
-			return (0);
-		}
+		k = 0;
+		while (arg[k])
+			free(arg[k++]);
+		free(arg);
 		i++;
 	}
-	return (1);
 }
 
-int	if_repetition(s_node *stack)
+int	if_repetition(t_node *stack)
 {
-	s_node	*first;
+	t_node	*first;
 	int		data;
 
 	while (stack)
